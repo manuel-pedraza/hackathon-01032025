@@ -22,11 +22,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <nav className="navbar">
-          <div className="brand">Recipio</div>
+          <Link className="brand" href="/">Recipio</Link>
           <div className="links">
             {/* <a href="#about">About</a> */}
-            <Link href="/recipies">Recipies</Link>
+            <Link href="/recipes">Recipes</Link>
+
             <Link href="/profile">Profile</Link>
+            
+            <Link href="/sign-in">Sign-in</Link>
           </div>
         </nav>
         {children}

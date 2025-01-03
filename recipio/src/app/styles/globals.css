@@ -67,8 +67,16 @@ a {
 .navbar .brand {
   font-size: 1.5em;
   font-weight: bold;
+  background-color: transparent;
+  color: var(--foreground);
+}
+
+.navbar .brand:hover {
+  color: var(--background);
+  background-color: transparent;
 }
 
 .navbar .links {
   display: flex;
 }
+
