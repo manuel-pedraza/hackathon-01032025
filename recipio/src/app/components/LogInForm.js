@@ -1,15 +1,14 @@
 "use client";
-
-import { useActionState } from "react";
-import { register } from "../../actions/profileController";
-import { redirect } from "next/navigation";
 import Link from "next/link";
+import { logIn } from "../../actions/profileController";
+import { useActionState } from "react";
 
-export default function RegisterForm() {
-    const [formState, formAction] = useActionState(register, {});
+
+export default function LogInForm() {
+    const [formState, formAction] = useActionState(logIn, {});
 
     if (formState.success)
-        redirect("/");
+            redirect("/");
 
     return (
         <div >
@@ -25,9 +24,9 @@ export default function RegisterForm() {
                     <input name="password" type="password" placeholder="Password" />
                 </div>
                 <div>
-                    <Link href="/log-in">Log in with an existing account</Link>
+                    <Link href="/sign-in">Register an account</Link>
                 </div>
-                <button>Create Account</button>
+                <button>Log in</button>
             </form>
         </div>
     );

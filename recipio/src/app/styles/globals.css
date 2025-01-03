@@ -50,18 +50,27 @@ a {
   padding: 10px 20px;
 }
 
-.navbar a {
+.navbar button{
+  height: 100%;
+}
+
+.navbar a, .navbar button {
   margin: 0 4px;
   border-radius: 25px;
   color: white;
   background-color: #575757;
+  border: none;
   text-decoration: none;
   padding: 8px 15px;
+  font-size: 1em;
+
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.navbar button:hover {
   background-color: #000;
-  color: var(--main-color)
+  color: var(--main-color);
+  cursor: pointer;
 }
 
 .navbar .brand {
@@ -79,4 +88,3 @@ a {
 .navbar .links {
   display: flex;
 }
-
