@@ -10,7 +10,7 @@ export default class Job{
             name: "",
             company: "",
             description: "",
-            technologies: "",
+            requirements: "",
             jobType: jobTypes.FULL_TIME,
             workType: jobWorkType.REMOTE,
             nextInterviewDate: "",
@@ -23,7 +23,7 @@ export default class Job{
         name = "",
         company = "",
         description = "",
-        technologies = "",
+        requirements = "",
         jobType = JobTypes.FULL_TIME,
         workType = JobWorkType.REMOTE,
         nextInterviewDate = "",
@@ -35,7 +35,7 @@ export default class Job{
         this.company = company;
         this.nextInterviewDate = nextInterviewDate;
         this.description = description;
-        this.technologies = technologies;
+        this.requirements = requirements;
         this.jobType = jobType;
         this.workType = workType;
         this.status = status;

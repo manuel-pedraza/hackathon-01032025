@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
 import Link from "next/link";
 import { getUserFromCookie } from "../utils/cookie";
-import { logOut }from "../controllers/profileController"
+import { logOut } from "../controllers/profileController"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +31,7 @@ export default async function RootLayout({ children }) {
 
             {user ? (
               <>
-              <Link href="/my-job-offers">My Job Offers</Link>
+                <Link href="/my-job-offers">My Job Offers</Link>
                 {/* <Link href="/profile">Profile</Link> */}
                 <form action={logOut} >
                   <button className="">
@@ -45,6 +45,11 @@ export default async function RootLayout({ children }) {
           </div>
         </nav>
         {children}
+        <footer style={{ minHeight: "120px", backgroundColor: "var(--main-color)", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <h2>
+            Little project to list job offers that the user has applied to.
+          </h2>
+        </footer>
       </body>
     </html>
   );
