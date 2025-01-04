@@ -29,7 +29,7 @@ export default async function myJobOffers() {
         >
             <div className="my-job-offers-header" style={{margin: "16px", display: "flex", alignItems: "center"}}>
                 <h1 style={{display: "inline-block"}}>My Job Offers</h1>
-                <AddJobButton />
+                <AddJobButton linkTo={"/my-job-offers/add/"} />
                
             </div>
             <div className="job-cards-container" 
