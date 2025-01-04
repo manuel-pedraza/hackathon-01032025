@@ -1,6 +1,6 @@
 import { redirect } from "next/dist/server/api-utils";
 import { getUserFromCookie } from "../../utils/cookie";
-import LogInForm from "../components/LogInForm";
+import LogInForm from "../components/forms/LogInForm";
 
 
 export default async function logIn() {

@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { getUserFromCookie } from "../../utils/cookie";
-import RegisterForm from "../components/RegisterForm";
+import RegisterForm from "../components/forms/RegisterForm";
 
-export default async function SignIn() {
+export default async function SignUp() {
 
     const user = await getUserFromCookie();
 

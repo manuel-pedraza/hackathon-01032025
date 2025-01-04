@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
 import Link from "next/link";
 import { getUserFromCookie } from "../utils/cookie";
-import { logOut }from "../actions/profileController"
+import { logOut }from "../controllers/profileController"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
             {user ? (
               <>
               <Link href="/my-job-offers">My Job Offers</Link>
-                <Link href="/profile">Profile</Link>
+                {/* <Link href="/profile">Profile</Link> */}
                 <form action={logOut} >
                   <button className="">
                     Sign-Out
@@ -40,7 +40,7 @@ export default async function RootLayout({ children }) {
                 </form>
               </>
             ) :
-              <Link href="/log-in">Log-in</Link>
+              <Link href="/login">Login</Link>
             }
           </div>
         </nav>

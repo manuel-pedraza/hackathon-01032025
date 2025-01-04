@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { logIn } from "../../actions/profileController";
+import { logIn } from "../../../controllers/profileController";
 import { useActionState } from "react";
 
 
@@ -24,9 +24,9 @@ export default function LogInForm() {
                     <input name="password" type="password" placeholder="Password" />
                 </div>
                 <div>
-                    <Link href="/sign-in">Register an account</Link>
+                    <Link href="/sign-up">Register an account</Link>
                 </div>
-                <button>Log in</button>
+                <button>Login</button>
             </form>
         </div>
     );
