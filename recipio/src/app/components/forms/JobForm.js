@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { createJob } from "../../../controllers/jobOffersController";
+import { createJob, editJob } from "../../../controllers/jobOffersController";
 import { useActionState } from "react";
 import jobStatus from "../../../enums/jobStatus";
 import jobWorkType from "../../../enums/jobWorkTypes";
@@ -10,12 +10,19 @@ const aJobStatus = Object.values(jobStatus);
 const aJobWorkType = Object.values(jobWorkType);
 const aJobTypes = Object.values(jobTypes);
 
-export default function CreateJobForm() {
-    const [formState, formAction] = useActionState(createJob, {});
+export default function JobForm(props) {
 
+    let actualAction = null;
+    
+    if (props.action === "edit") {
+        actualAction = editJob;
+    } else if (props.action === "create") {
+        actualAction = createJob;
+    }
+
+    const [formState, formAction] = useActionState(actualAction, {});
     console.log(formState);
     
-
     if (formState.success)
         redirect("/");
 
@@ -54,7 +61,15 @@ export default function CreateJobForm() {
                     <label>Description</label>
                     <input name="description" type="text-area" placeholder="" />
                 </div>
-                <button>Login</button>
+                <button>
+                    {
+                        props.action === "edit" ?
+                            "Edit" :
+                            props.action === "create" ?
+                                "Create" :
+                                ""
+                    }
+                </button>
             </form>
         </div>
     );

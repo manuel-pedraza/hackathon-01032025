@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getUserFromCookie } from '../../../utils/cookie';
-import CreateJob from '../../components/forms/CreateJobForm';
+import CreateJob from '../../components/forms/JobForm';
 
 export default async function createJob() {
 
@@ -11,7 +11,7 @@ export default async function createJob() {
 
     return (
         <div >
-            <CreateJob />
+            <CreateJob action="create" />
         </div>
     );
 }

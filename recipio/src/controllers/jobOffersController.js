@@ -20,9 +20,6 @@ async function validateJobOffer(form, user) {
         requirements: []
     });
 
-    // console.log("J", job, "Form", form);
-    
-
     job.sanitize();
     job.user = ObjectId.createFromHexString(user);
 
@@ -66,11 +63,30 @@ export const getJobOffers = async () => {
     let jobs = [];
 
     for (let index = 0; index < userJobs.length; index++) {
-        jobs.push(new Job(userJobs[index]));
+        const job = userJobs[index];
+        let jobToAdd = new Job(job);
+        jobToAdd._id = job._id;
+        console.log("JTA", jobToAdd);
+        
+        jobs.push(jobToAdd);
     }
-    
-    console.log("Jobs", jobs);
-    
 
     return jobs;
 }
+
+export const editJob = async (prevState, formData) => {
+
+    const user = await getUserFromCookie();
+
+    if (!user)
+        return redirect("/");
+
+    const result = await validateJobOffer(formData, user.userId);
+
+    if (result.errors.name || result.errors.company || result.errors.status || result.errors.type || result.errors.workType)
+        return { errors: result.errors };
+
+    const job = await AddJob(result.job);
+    return redirect("/my-job-offers");
+
+};

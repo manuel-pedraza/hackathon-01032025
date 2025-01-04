@@ -29,6 +29,7 @@ export default class Job{
         status = jobStatus.ACCEPTED,
         
     }){
+        this._id = null;
         this.user = null;
         this.name = name;
         this.company = company;

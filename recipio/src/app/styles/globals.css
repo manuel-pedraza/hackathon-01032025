@@ -145,6 +145,8 @@ button:hover {
 }
 
 .btn-job-card{
+  border-radius: 24px;
+  margin: 0.2rem;
   margin-top: 0.4rem;
   padding: 0.4rem 2rem;
   color: #d63a29;

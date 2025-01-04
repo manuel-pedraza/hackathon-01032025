@@ -1,7 +1,7 @@
-import { log } from 'console';
 import Job from '../../classes/Job'
 import React from 'react'
 import jobStatus from '../../enums/jobStatus';
+import Link from 'next/link';
 
 export default function JobCard({ job }) {
 
@@ -54,8 +54,8 @@ export default function JobCard({ job }) {
                 </div>
             </div>
             <div display="flex" style={{ display: 'flex', justifyContent: "center", alignItems: 'center' }}>
-                <button className="btn-job-card edit">Edit</button>
-                <button className="btn-job-card remove">Remove</button>
+                <Link href={`/my-job-offers/edit/${job._id}`} className="btn-job-card edit">Edit</Link>
+                <Link href={`/my-job-offers/${job._id}`} className="btn-job-card remove">Remove</Link>
             </div>
 
 

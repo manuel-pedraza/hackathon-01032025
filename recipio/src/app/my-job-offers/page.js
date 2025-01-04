@@ -18,8 +18,6 @@ export default async function myJobOffers() {
         redirect("/");
     }else {
         jobs = await getJobOffers();
-        console.log("PJOBS", jobs);
-        
     }
 
     return (
