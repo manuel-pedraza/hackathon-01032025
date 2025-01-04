@@ -13,6 +13,9 @@ const aJobTypes = Object.values(jobTypes);
 export default function CreateJobForm() {
     const [formState, formAction] = useActionState(createJob, {});
 
+    console.log(formState);
+    
+
     if (formState.success)
         redirect("/");
 
@@ -29,17 +32,17 @@ export default function CreateJobForm() {
 
                 <div>
                     <label>Status</label>
-                    <select name="status" id="cars">
+                    <select name="status">
                         {aJobStatus.map(s => <option key={`status-${s}`} value={s}>{s}</option>)}
                     </select>
 
                     <label>Type</label>
-                    <select name="work" id="cars">
+                    <select name="work">
                         {aJobWorkType.map(s => <option key={`work-${s}`} value={s}>{s}</option>)}
                     </select>
 
                     <label>Work Type</label>
-                    <select name="type" id="cars">
+                    <select name="type">
                         {aJobTypes.map(s => <option key={`type-${s}`} value={s}>{s}</option>)}
                     </select>
                 </div>

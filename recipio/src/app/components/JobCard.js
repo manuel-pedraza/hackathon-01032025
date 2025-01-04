@@ -28,7 +28,7 @@ export default function JobCard({ job }) {
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div>
                         <p>{job.company}</p>
-                        <h6>{`Interview Date: ${job.nextInterviewDate}`}</h6>
+                        <h6>{`Interview Date: ${job.nextInterviewDate === "" ? "None" : job.nextInterviewDate}`}</h6>
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: "column" }}>
@@ -39,12 +39,18 @@ export default function JobCard({ job }) {
             </div>
             <div className="job-card-body" style={{ fontSize: "0.9em" }}>
                 <p className='job-card-description'>{job.description}</p>
-                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around", overflowY: "hidden", maxHeight: "3.4rem" }}>
-                    {job.requirements.map((r, index) =>
-                        <p key={`requirement-${index}`} className="job-card-span-small" style={{ margin: "0.1rem", backgroundColor: "#329ea8" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around", overflowY: "hidden", maxHeight: "3.4rem", minHeight: "3.4rem" }}>
+                    {job.requirements.lenght > 0 ? 
+                    job.requirements.map((r, index) =>
+                        <p key={`requirement-${index}`} className="job-card-span-small" style={{ margin: "0.1rem", paddingTop: "0.15rem", backgroundColor: "#329ea8" }}>
                             {r}
                         </p>
-                    )}
+                    )
+                        :
+                        <p key={`requirement-none`} className="job-card-span-small" style={{ margin: "0.1rem", paddingTop: "0.15rem", backgroundColor: "#329ea8" }}>
+                            No requirements
+                        </p>
+                    }
                 </div>
             </div>
             <div display="flex" style={{ display: 'flex', justifyContent: "center", alignItems: 'center' }}>

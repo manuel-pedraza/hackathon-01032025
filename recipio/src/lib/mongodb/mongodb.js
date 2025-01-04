@@ -10,11 +10,12 @@ async function getClient() {
         throw new Error("Invalid environment variable: 'MONGODB_URI'");
 
     const uri = process.env.MONGODB_URI;
-    const options = {
-        useUnifiedTopology: false
-    };
+    //const options = {
+    //    useUnifiedTopology: false
+    //};
 
-    let client = new MongoClient(uri, options);
+    // let client = new MongoClient(uri, options);
+    let client = new MongoClient(uri);
 
     if (process.env.NODE_ENV === "development") {
         // In development mode, use a global variable so that the value

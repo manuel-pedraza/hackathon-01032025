@@ -1,27 +1,26 @@
 import Image from "next/image";
 import JobCard from "../components/JobCard";
 import AddJobButton from "../components/AddJobButton";
+import { getJobOffers } from "../../controllers/jobOffersController";
 import jobTypes from "../../enums/jobTypes";
 import jobStatus from "../../enums/jobStatus";
 import jobWorkType from "../../enums/jobWorkTypes";
+import { getUserFromCookie } from "../../utils/cookie";
 
-let jobs = [];
 
-for (let index = 0; index < 10; index++) {
-    jobs.push({
-        id: index,
-        name: "Job Name " + index,
-        company: "Generic Long Company Name",
-        description: "Very VeryVeryVeryVeryVeryVeryVery Very Very Very Very Very  Very Very Very Very Very Very Very Very Very Very Very Very Very long description",
-        requirements: ["Technologies", "C++", "Java", "Python", "React", "NodeJS", "Docker", "Kubernetes", "AWS", "Azure", "GCP", "Git", "Jenkins", "CI/CD", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], 
-        nextInterviewDate: "01 Jan 2024 13:00",
-        jobType: jobTypes.FULL_TIME,
-        workType: jobWorkType.REMOTE,
-        status: jobStatus.ACCEPTED,
-    });
-}
 
 export default async function myJobOffers() {
+
+    const user = await getUserFromCookie();
+    let jobs = [];
+
+    if (!user) {
+        redirect("/");
+    }else {
+        jobs = await getJobOffers();
+        console.log("PJOBS", jobs);
+        
+    }
 
     return (
         <div className="my-job-offers-container"
@@ -43,7 +42,7 @@ export default async function myJobOffers() {
                     overflowY: "auto"
                 }}
             >
-                {jobs.map((job, index) => <JobCard key={`job-${index}`} job={job} />)}
+                {jobs.length > 0 ? jobs.map((job, index) => <JobCard key={`job-${index}`} job={job} />) : <></>}
             </div>
         </div>
     );
