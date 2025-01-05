@@ -34,7 +34,7 @@ export default async function RootLayout({ children }) {
                 <Link href="/my-job-offers">My Job Offers</Link>
                 {/* <Link href="/profile">Profile</Link> */}
                 <form action={logOut} >
-                  <button className="">
+                  <button>
                     Sign-Out
                   </button>
                 </form>

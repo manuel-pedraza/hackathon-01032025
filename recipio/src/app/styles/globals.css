@@ -91,13 +91,108 @@ button:hover {
   display: flex;
 }
 
+/* Basic Form */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 85vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  border: 2px solid var(--main-color);
+  min-height: 240px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 12px;
+}
+
+
+.form button {
+  background-color: #fff;
+  color: var(--main-color-p-2);
+  border: 2px solid var(--main-color-p-2);
+
+}
+
+.form button:hover {
+  background-color: var(--main-color-p-2);
+  color: #fff;
+  border: 2px solid var(--main-color-p-2);
+
+}
+
+.form input {
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #666;
+}
+
+.form input:focus,
+.form input:target,
+.form input:focus-visible,
+.form input:active,
+.form input:focus-within{
+  border: 2px solid var(--main-color-p-2);
+}
+
+a.cstm-link {
+  text-decoration: none;
+  /* Remove the default underline */
+  color: #007BFF;
+  /* Primary color */
+  font-weight: bold;
+  /* Make it stand out */
+  padding: 4px 12px;
+  /* Add some padding */
+  border-radius: 5px;
+  /* Rounded corners */
+  transition: all 0.1s ease;
+  /* Smooth transition effect */
+}
+
+a.cstm-link:hover {
+  background-color: #007BFF;
+  /* Add a background color on hover */
+  color: #ffffff;
+  /* Change text color to white */
+  text-decoration: none;
+  /* Ensure no underline */
+}
+
+a.cstm-link:active {
+  transform: scale(0.98);
+  /* Add a subtle "pressed" effect */
+}
+
+a.cstm-link:focus {
+  outline: 2px solid #0056b3;
+  /* Accessibility: Focus outline */
+  outline-offset: 2px;
+  /* Spacing for the outline */
+}
+
+.form p.error{
+  color: #c56565;
+  font-size: small;
+}
 
 /* Jobs Styles */
 .job-card {
-  display: flex;
   min-height: 240px;
   min-width: 340px;
   max-width: 340px;
+  display: flex;
   flex-direction: column;
   border: 2px solid var(--main-color);
   border-radius: 8px;
@@ -144,7 +239,7 @@ button:hover {
   max-height: 1rem;
 }
 
-.btn-job-card{
+.btn-job-card {
   border-radius: 24px;
   margin: 0.2rem;
   margin-top: 0.4rem;
@@ -161,7 +256,7 @@ button:hover {
 
 }
 
-.btn-job-card.edit:hover{
+.btn-job-card.edit:hover {
   background-color: #edb31f;
   color: #fff;
   border: 2px solid #edb31f;
