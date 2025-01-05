@@ -12,6 +12,10 @@ const aJobTypes = Object.values(jobTypes);
 
 export default function JobForm(props) {
 
+    console.log(
+
+        "JOB", props.job
+    );
     let actualAction = null;
     
     if (props.action === "edit") {
@@ -32,35 +36,37 @@ export default function JobForm(props) {
             <form action={formAction}>
                 <div>
                     <label>Job Offer:</label>
-                    <input name="name" type="text" placeholder="Job Offer" />
+                    <input name="name" type="text" defaultValue={props.job?.name} placeholder="Job Offer" />
                     <label>Company</label>
-                    <input name="company" type="text" placeholder="Company" />
+                    <input name="company" type="text" defaultValue={props.job?.company} placeholder="Company" />
                 </div>
-
+                
+                
                 <div>
                     <label>Status</label>
-                    <select name="status">
+                    <select name="status" defaultValue={props.job?.status}>
                         {aJobStatus.map(s => <option key={`status-${s}`} value={s}>{s}</option>)}
                     </select>
 
                     <label>Type</label>
-                    <select name="work">
+                    <select name="work" defaultValue={props.job?.workType}>
                         {aJobWorkType.map(s => <option key={`work-${s}`} value={s}>{s}</option>)}
                     </select>
 
                     <label>Work Type</label>
-                    <select name="type">
+                    <select name="type" defaultValue={props.job?.jobType}>
                         {aJobTypes.map(s => <option key={`type-${s}`} value={s}>{s}</option>)}
                     </select>
                 </div>
                 <div>
                     <label>Next Interview Date</label>
-                    <input name="interview" type="datetime-local" placeholder="" />
+                    <input name="interview" type="datetime-local" defaultValue={props.job?.nextInterviewDate} placeholder="" />
                 </div>
                 <div>
                     <label>Description</label>
-                    <input name="description" type="text-area" placeholder="" />
+                    <input name="description" type="text-area" defaultValue={props.job?.description} placeholder="" />
                 </div>
+                <input type="hidden" name="jobId" defaultValue={props.job?._id}/>
                 <button>
                     {
                         props.action === "edit" ?

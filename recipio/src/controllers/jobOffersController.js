@@ -2,7 +2,7 @@
 
 import { getUserFromCookie } from "../utils/cookie";
 import { redirect } from "next/navigation";
-import { AddJob, GetJobOffersByUser } from "../services/job";
+import { AddJob, GetJobOfferById, GetJobOffersByUser, UpdateJobById } from "../services/job";
 import { ObjectId } from "mongodb";
 import Job from "../classes/Job";
 
@@ -13,11 +13,11 @@ async function validateJobOffer(form, user) {
         name: form.get("name"),
         company: form.get("company"),
         description: form.get("description"),
+        requirements: [],
         nextInterviewDate: form.get("interview"),
         status: form.get("status"),
         workType: form.get("work"),
         jobType: form.get("type"),
-        requirements: []
     });
 
     job.sanitize();
@@ -66,8 +66,6 @@ export const getJobOffers = async () => {
         const job = userJobs[index];
         let jobToAdd = new Job(job);
         jobToAdd._id = job._id;
-        console.log("JTA", jobToAdd);
-        
         jobs.push(jobToAdd);
     }
 
@@ -82,11 +80,48 @@ export const editJob = async (prevState, formData) => {
         return redirect("/");
 
     const result = await validateJobOffer(formData, user.userId);
+    //console.log("EDITING", formData, result.job);
+    
 
     if (result.errors.name || result.errors.company || result.errors.status || result.errors.type || result.errors.workType)
         return { errors: result.errors };
+    
+    let jobId = formData.get("jobId");
+    if(typeof jobId !== "string") jobId = "";
 
-    const job = await AddJob(result.job);
+    const jobToEdit = await GetJobOfferById(ObjectId.createFromHexString(jobId));
+    if(jobToEdit.user != user.userId)
+        return redirect("/");
+
+    const resJobNormalized = {
+        name: result.job.name,
+        company: result.job.company,
+        nextInterviewDate: result.job.nextInterviewDate,
+        description: result.job.description,
+        requirements: result.job.requirements,
+        jobType: result.job.jobType,
+        workType: result.job.workType,
+        status: result.job.status,
+    };
+
+    const job = await UpdateJobById(ObjectId.createFromHexString(jobId), resJobNormalized);
+
     return redirect("/my-job-offers");
 
 };
+
+export const getJobById = async (id) => {
+    const user = await getUserFromCookie();
+
+    if(!user)
+        return redirect("/");
+
+    const job = await GetJobOfferById(ObjectId.createFromHexString(id));
+    
+    let jobTmp = new Job(job);
+    jobTmp._id = job._id;
+    jobTmp.user = job.user;
+    
+    return JSON.parse(JSON.stringify(jobTmp));
+
+ }

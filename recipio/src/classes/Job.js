@@ -10,11 +10,11 @@ export default class Job{
             name: "",
             company: "",
             description: "",
-            requirements: "",
+            requirements: [],
             nextInterviewDate: "",
             jobType: jobTypes.FULL_TIME,
             workType: jobWorkType.REMOTE,
-            status: jobStatus.PENDING,
+            status: jobStatus.ON_GOING,
         });
     }
 
@@ -22,7 +22,7 @@ export default class Job{
         name = "",
         company = "",
         description = "",
-        requirements = "",
+        requirements = [],
         nextInterviewDate = "",
         jobType = jobTypes.FULL_TIME,
         workType = jobWorkType.REMOTE,
@@ -47,7 +47,6 @@ export default class Job{
         if(typeof this.company != "string") this.company = "";
         if(typeof this.description != "string") this.description = "";
         if(typeof this.nextInterviewDate != "string") this.nextInterviewDate = "";
-        if(typeof this.requirements != "string") this.requirements = "";
         if(typeof this.jobType != "string") this.jobType = "";
         if(typeof this.workType != "string") this.workType = "";
         if(typeof this.status != "string") this.status = "";
@@ -57,7 +56,7 @@ export default class Job{
         this.company = this.company.trim();
         this.description = this.description.trim();
         this.nextInterviewDate = this.nextInterviewDate.trim();
-        this.requirements = this.requirements.trim();
+        this.requirements = this.requirements;
         this.jobType = this.jobType.trim();
         this.workType = this.workType.trim();
         this.status = this.status.trim();

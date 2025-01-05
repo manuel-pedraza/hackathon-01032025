@@ -40,7 +40,7 @@ export default function JobCard({ job }) {
             <div className="job-card-body" style={{ fontSize: "0.9em" }}>
                 <p className='job-card-description'>{job.description}</p>
                 <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around", overflowY: "hidden", maxHeight: "3.4rem", minHeight: "3.4rem" }}>
-                    {job.requirements.lenght > 0 ? 
+                    {job.requirements?.length > 0 ? 
                     job.requirements.map((r, index) =>
                         <p key={`requirement-${index}`} className="job-card-span-small" style={{ margin: "0.1rem", paddingTop: "0.15rem", backgroundColor: "#329ea8" }}>
                             {r}
