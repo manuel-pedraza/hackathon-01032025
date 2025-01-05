@@ -13,12 +13,15 @@ async function validateJobOffer(form, user) {
         name: form.get("name"),
         company: form.get("company"),
         description: form.get("description"),
-        requirements: [],
+        requirements: JSON.parse(form.get("requirements")),
         nextInterviewDate: form.get("interview"),
         status: form.get("status"),
         workType: form.get("work"),
         jobType: form.get("type"),
     });
+
+    console.log("JOB_TO_VALIDATE", form.get("requirements"), job);
+    
 
     job.sanitize();
     job.user = ObjectId.createFromHexString(user);
@@ -119,6 +122,8 @@ export const getJobById = async (id) => {
     const job = await GetJobOfferById(ObjectId.createFromHexString(id));
 
     let jobTmp = new Job(job);
+    
+    jobTmp.requirements = job.requirements == 0 ? [] : job.requirements;
     jobTmp._id = job._id;
     jobTmp.user = job.user;
 

@@ -142,8 +142,34 @@ button:hover {
 .form input:target,
 .form input:focus-visible,
 .form input:active,
-.form input:focus-within{
+.form input:focus-within {
   border: 2px solid var(--main-color-p-2);
+}
+
+.form select.refused {
+  border: 2px solid #d9534f !important;
+}
+
+.form select.accepted {
+  border: 2px solid #5cb85c !important;
+}
+
+.form select.on-going {
+  border: 2px solid #f0ad4e !important;
+}
+
+.form select {
+
+  border-radius: 24px;
+  padding: 0.2rem;
+  border: 2px solid #444; 
+}
+
+button.add-requirement{
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: #fff;
+  border-color: #007BFF;
 }
 
 a.cstm-link {
@@ -182,7 +208,7 @@ a.cstm-link:focus {
   /* Spacing for the outline */
 }
 
-.form p.error{
+.form p.error {
   color: #c56565;
   font-size: small;
 }
@@ -200,6 +226,16 @@ a.cstm-link:focus {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   margin: 12px;
+}
+
+.job-card .name-title {
+  min-height: 4rem;
+  max-height: 4rem;
+  overflow-y: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .job-card-description {
@@ -239,6 +275,11 @@ a.cstm-link:focus {
   max-height: 1rem;
 }
 
+.job-card-span-small.edit:hover {
+  cursor: pointer;
+  background-color: #d63a29 !important;
+}
+
 .btn-job-card {
   border-radius: 24px;
   margin: 0.2rem;
@@ -268,4 +309,45 @@ a.cstm-link:focus {
   color: #fff;
   border: 2px solid #d63a29;
 
+}
+
+/* Banner */
+
+.banner {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(to right, #007BFF, #0056b3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.banner h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.banner p {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.banner button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.banner button:hover {
+  background-color: #007BFF;
+  color: white;
 }

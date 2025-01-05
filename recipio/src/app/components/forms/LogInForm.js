@@ -15,7 +15,6 @@ export default function LogInForm() {
 
     return (
         <div className="form-container">
-            {/* // TODO: Validation indicators */}
             <form action={formAction} className="form">
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginBottom: "0.4rem" }}>
                     <h1 style={{textAlign: "center"}}>Login</h1>

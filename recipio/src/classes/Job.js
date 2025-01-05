@@ -56,7 +56,6 @@ export default class Job{
         this.company = this.company.trim();
         this.description = this.description.trim();
         this.nextInterviewDate = this.nextInterviewDate.trim();
-        this.requirements = this.requirements;
         this.jobType = this.jobType.trim();
         this.workType = this.workType.trim();
         this.status = this.status.trim();

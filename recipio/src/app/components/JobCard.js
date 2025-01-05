@@ -23,7 +23,7 @@ export default function JobCard({ job }) {
         <div className="job-card">
             <div className="job-card-header">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h2>{job.name}</h2>
+                    <h2 className="name-title">{job.name}</h2>
                     <h4 className="job-card-span" style={{ backgroundColor: getColorByStatus(job.status) }}>{job.status}</h4>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
