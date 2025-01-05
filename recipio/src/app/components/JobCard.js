@@ -2,6 +2,7 @@ import Job from '../../classes/Job'
 import React from 'react'
 import jobStatus from '../../enums/jobStatus';
 import Link from 'next/link';
+import { deleteJob } from '../../controllers/jobOffersController';
 
 export default function JobCard({ job }) {
 
@@ -40,12 +41,12 @@ export default function JobCard({ job }) {
             <div className="job-card-body" style={{ fontSize: "0.9em" }}>
                 <p className='job-card-description'>{job.description}</p>
                 <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around", overflowY: "hidden", maxHeight: "3.4rem", minHeight: "3.4rem" }}>
-                    {job.requirements?.length > 0 ? 
-                    job.requirements.map((r, index) =>
-                        <p key={`requirement-${index}`} className="job-card-span-small" style={{ margin: "0.1rem", paddingTop: "0.15rem", backgroundColor: "#329ea8" }}>
-                            {r}
-                        </p>
-                    )
+                    {job.requirements?.length > 0 ?
+                        job.requirements.map((r, index) =>
+                            <p key={`requirement-${index}`} className="job-card-span-small" style={{ margin: "0.1rem", paddingTop: "0.15rem", backgroundColor: "#329ea8" }}>
+                                {r}
+                            </p>
+                        )
                         :
                         <p key={`requirement-none`} className="job-card-span-small" style={{ margin: "0.1rem", paddingTop: "0.15rem", backgroundColor: "#329ea8" }}>
                             No requirements
@@ -55,10 +56,13 @@ export default function JobCard({ job }) {
             </div>
             <div display="flex" style={{ display: 'flex', justifyContent: "center", alignItems: 'center' }}>
                 <Link href={`/my-job-offers/edit/${job._id}`} className="btn-job-card edit">Edit</Link>
-                <Link href={`/my-job-offers/${job._id}`} className="btn-job-card remove">Remove</Link>
+                <form action={deleteJob} >
+                    <input type="hidden" name="jobId" defaultValue={job?._id.toString()} />
+                    <button className="btn-job-card remove">
+                        Remove
+                    </button>
+                </form>
             </div>
-
-
         </div>
     )
 }

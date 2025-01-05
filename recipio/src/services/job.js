@@ -31,3 +31,12 @@ export async function UpdateJobById(id, updateObj) {
 
     return await jobs.findOneAndUpdate({ _id: id }, { $set: updateObj });
 }
+
+export async function DeleteJobById(id) {
+    const mongoClient = await getClient();
+    const db = await mongoClient.db();
+    const jobs = await db.collection("Jobs");
+
+    return await jobs.deleteOne({ _id: id });
+
+}
